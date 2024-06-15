@@ -2,11 +2,40 @@
 
 namespace TodoAPI.Controllers
 {
+    [Route("api/[Controller]")]
+    [ApiController]
     public class TodoController : Controller
     {
-        public IActionResult Index()
+        private static List<TodoItem> todoItems = new List<TodoItem>();
+
+        [HttpGet]
+        public ActionResult<IEnumerable<TodoItem>> GetTodoItems()
         {
-            return View();
+            return todoItems;
+        }
+
+        [HttpPost]
+        public ActionResult<TodoItem> AddTodoItem(TodoItem item)
+        {
+            item.Id = Guid.NewGuid();
+            
+            todoItems.Add(item);
+            
+            return Ok(todoItems);
+        }
+
+        [HttpPut]
+        public ActionResult<TodoItem> UpdateTodoItem(TodoItem item)
+        {
+            var itemToEdit = todoItems.SingleOrDefault(i => i.Id == item.Id);
+
+            if(itemToEdit != null)
+            {
+                itemToEdit.Description = item.Description;
+                itemToEdit.IsDone = item.IsDone;
+                return Ok(itemToEdit);
+            }
+            return BadRequest("No item found");
         }
     }
 }

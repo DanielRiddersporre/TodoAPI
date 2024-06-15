@@ -1,4 +1,4 @@
-﻿namespace TodoAPI.Controllers
+﻿namespace TodoAPI
 {
     public class TodoItem
     {

@@ -37,5 +37,13 @@ namespace TodoAPI.Controllers
             }
             return BadRequest("No item found");
         }
+
+        [HttpPut]
+        public ActionResult DeleteTodoItem(Guid id)
+        {
+            var todoItem = todoItems.SingleOrDefault(item => item.Id == id);
+            todoItems.Remove(todoItem);
+            return Ok(todoItems);
+        }
     }
 }

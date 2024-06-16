@@ -14,7 +14,7 @@ namespace TodoAPI.Controllers
             return todoItems;
         }
 
-        [HttpPost]
+        [HttpPost("{item}")]
         public ActionResult<TodoItem> AddTodoItem(TodoItem item)
         {
             item.Id = Guid.NewGuid();
@@ -24,7 +24,7 @@ namespace TodoAPI.Controllers
             return Ok(todoItems);
         }
 
-        [HttpPut]
+        [HttpPut("{item}")]
         public ActionResult<TodoItem> UpdateTodoItem(TodoItem item)
         {
             var itemToEdit = todoItems.SingleOrDefault(i => i.Id == item.Id);
@@ -38,12 +38,16 @@ namespace TodoAPI.Controllers
             return BadRequest("No item found");
         }
 
-        [HttpPut]
+        [HttpDelete("{id}")]
         public ActionResult DeleteTodoItem(Guid id)
         {
             var todoItem = todoItems.SingleOrDefault(item => item.Id == id);
-            todoItems.Remove(todoItem);
-            return Ok(todoItems);
+            if (todoItem != null)
+            {
+                todoItems.Remove(todoItem); 
+                return Ok($"{todoItem} deleted successfully!");
+            }
+            return BadRequest($"Item with {id} was not found");
         }
     }
 }

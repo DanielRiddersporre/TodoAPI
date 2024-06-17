@@ -4,7 +4,7 @@ namespace TodoAPI.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-    public class TodoController : Controller
+    public class ItemController : Controller
     {
         private static List<TodoItem> todoItems = new List<TodoItem>();
 

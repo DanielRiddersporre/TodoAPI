@@ -8,8 +8,9 @@ namespace SimpleTodo_Domain.Interfaces
 {
     public interface ITodoItemRepository
     {
-        void Add(TodoItem item);
-        void Update(TodoItem item);
-        void Delete(TodoItem item);
+        Task<IEnumerable<TodoItem>> GetAllTodoItemsByTodoListId(Guid TodoListId);
+        void AddTodoItem(TodoItem item);
+        void UpdateTodoItem(TodoItem item);
+        void DeleteTodoItemById(Guid Id);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace TodoAPI
+﻿namespace SimpleTodo_Domain
 {
     public class TodoList
     {

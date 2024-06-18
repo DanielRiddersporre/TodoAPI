@@ -1,26 +1,33 @@
-﻿using SimpleTodo_Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using SimpleTodo_Domain;
 using SimpleTodo_Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TodoAPI_Infrastructure.Repositories
 {
     internal class TodoItemRepository : ITodoItemRepository
     {
-        public void Add(TodoItem item)
+        private readonly TodoContext _context;
+
+        public TodoItemRepository(TodoContext context)
+        {
+            _context = context;
+        }
+        public async Task<IEnumerable<TodoItem>> GetAllTodoItemsByTodoListId(Guid TodoListId)
+        {
+            return await _context.TodoItems.Where(t => t.TodoListId == TodoListId).ToListAsync();
+        }
+
+        public void AddTodoItem(TodoItem item)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(TodoItem item)
+        public void DeleteTodoItemById(Guid Id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(TodoItem item)
+        public void UpdateTodoItem(TodoItem item)
         {
             throw new NotImplementedException();
         }

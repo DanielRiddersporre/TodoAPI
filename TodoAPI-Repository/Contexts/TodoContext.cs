@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SimpleTodo_Domain;
 
-namespace TodoAPI
+namespace SimpleTodo_Domain
 {
     public class TodoContext : DbContext
     {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SimpleTodo_Domain;
 
 namespace TodoAPI
 {
@@ -9,6 +10,7 @@ namespace TodoAPI
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //TODO: Move connection string to Github secrets
             optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=TodoDatabase;Authentication=Active Directory Integrated;TrustServerCertificate=True;");
         }
 

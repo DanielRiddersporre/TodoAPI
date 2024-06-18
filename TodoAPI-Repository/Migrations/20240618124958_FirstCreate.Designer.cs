@@ -9,11 +9,11 @@ using TodoAPI;
 
 #nullable disable
 
-namespace TodoAPI.Migrations
+namespace TodoAPI_Repository.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20240618104118_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240618124958_FirstCreate")]
+    partial class FirstCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

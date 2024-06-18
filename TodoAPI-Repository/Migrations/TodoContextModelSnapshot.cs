@@ -8,7 +8,7 @@ using TodoAPI;
 
 #nullable disable
 
-namespace TodoAPI.Migrations
+namespace TodoAPI_Repository.Migrations
 {
     [DbContext(typeof(TodoContext))]
     partial class TodoContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace TodoAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TodoAPI.TodoItem", b =>
+            modelBuilder.Entity("SimpleTodo_Domain.TodoItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace TodoAPI.Migrations
                     b.ToTable("TodoItems");
                 });
 
-            modelBuilder.Entity("TodoAPI.TodoList", b =>
+            modelBuilder.Entity("SimpleTodo_Domain.TodoList", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

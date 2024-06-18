@@ -2,7 +2,7 @@
 {
     public class TodoList
     {
-        Guid Id { get; set; }
-        HashSet<Guid> Items { get; set; }
+        public Guid Id { get; set; }
+        public HashSet<Guid> Items { get; set; }
     }
 }

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleTodo-Domain\SimpleTodo.Domain.csproj" />
+    <ProjectReference Include="..\SimpleTodo.Domain\SimpleTodo.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

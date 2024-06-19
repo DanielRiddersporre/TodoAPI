@@ -1,4 +1,4 @@
-﻿namespace SimpleTodo_Domain
+﻿namespace SimpleTodo.Domain
 {
     public class TodoItem
     {

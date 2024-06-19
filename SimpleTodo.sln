@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTodo-API", "TodoAPI\SimpleTodo-API.csproj", "{0365FADF-C3F2-4897-83E0-B9700599DAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTodo.API", "TodoAPI\SimpleTodo.API.csproj", "{0365FADF-C3F2-4897-83E0-B9700599DAA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTodo-Infrastructure", "TodoAPI-Repository\SimpleTodo-Infrastructure.csproj", "{6483B451-3730-4AB5-82B2-9696A765E9A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTodo.Infrastructure", "TodoAPI-Repository\SimpleTodo.Infrastructure.csproj", "{6483B451-3730-4AB5-82B2-9696A765E9A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTodo-Domain", "SimpleTodo-Domain\SimpleTodo-Domain.csproj", "{F8B4FFCD-D104-4DF9-88F9-5D9F44432CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTodo.Domain", "SimpleTodo-Domain\SimpleTodo.Domain.csproj", "{F8B4FFCD-D104-4DF9-88F9-5D9F44432CFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

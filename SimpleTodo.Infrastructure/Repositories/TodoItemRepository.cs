@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SimpleTodo_Domain;
-using SimpleTodo_Domain.Interfaces;
+using SimpleTodo.Domain;
 
-namespace TodoAPI_Infrastructure.Repositories
+namespace SimpleTodo.Infrastructure
 {
-    internal class TodoItemRepository : ITodoItemRepository
+    public class TodoItemRepository : ITodoListRepository
     {
         private readonly TodoContext _context;
 
@@ -17,17 +16,17 @@ namespace TodoAPI_Infrastructure.Repositories
             return await _context.TodoItems.Where(t => t.TodoListId == TodoListId).ToListAsync();
         }
 
-        public void AddTodoItem(TodoItem item)
+        public void AddTodoList(TodoList todoList)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTodoItemById(Guid Id)
+        public void UpdateTodoList(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateTodoItem(TodoItem item)
+        public void DeleteTodoList(Guid id)
         {
             throw new NotImplementedException();
         }

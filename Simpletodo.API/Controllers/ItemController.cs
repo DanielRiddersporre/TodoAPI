@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SimpleTodo_Domain;
+using SimpleTodo.Domain;
 
-namespace TodoAPI.Controllers
+namespace SimpleTodo.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]

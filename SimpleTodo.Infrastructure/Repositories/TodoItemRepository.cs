@@ -17,17 +17,19 @@ namespace SimpleTodo.Infrastructure
             return await _context.TodoItems.Where(t => t.TodoListId == TodoListId).ToListAsync();
         }
 
-        void ITodoItemRepository.AddTodoItem(TodoItem item)
+        public void AddTodoItem(TodoItem item)
+        {
+            _context.TodoItems.Add(item);
+
+            _context.SaveChanges();
+        }
+
+        public void UpdateTodoItem(TodoItem item)
         {
             throw new NotImplementedException();
         }
 
-        void ITodoItemRepository.UpdateTodoItem(TodoItem item)
-        {
-            throw new NotImplementedException();
-        }
-
-        void ITodoItemRepository.DeleteTodoItemById(Guid Id)
+        public void DeleteTodoItemById(Guid Id)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Logging.Console;
 using SimpleTodo.Domain;
 using SimpleTodo.Infrastructure;
+using SimpleTodo_Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +16,11 @@ builder.Services.AddScoped<TodoContext>();
 
 // Register repositories
 builder.Services.AddScoped<ITodoListRepository, TodoListRepository>();
+builder.Services.AddScoped<ITodoItemRepository, TodoItemRepository>();
 
 // Register services
 builder.Services.AddScoped<ITodoListService, TodoListService>();
+builder.Services.AddScoped<ITodoItemService, TodoItemService>();
 
 var app = builder.Build();
 

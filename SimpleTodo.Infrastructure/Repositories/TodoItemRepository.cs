@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SimpleTodo.Domain;
 
 namespace SimpleTodo.Infrastructure
@@ -26,12 +27,16 @@ namespace SimpleTodo.Infrastructure
 
         public void UpdateTodoItem(TodoItem item)
         {
-            throw new NotImplementedException();
+            _context.TodoItems.Update(item);
+
+            _context.SaveChanges();
         }
 
-        public void DeleteTodoItemById(Guid Id)
+        public void DeleteTodoItemById(TodoItem item)
         {
-            throw new NotImplementedException();
+            _context.TodoItems.Remove(item);
+
+            _context.SaveChanges();
         }
     }
 }

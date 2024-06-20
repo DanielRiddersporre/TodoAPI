@@ -2,9 +2,9 @@
 {
     public interface ITodoItemRepository
     {
-        Task<IEnumerable<TodoItem>> GetAllTodoItemsByTodoListId(Guid TodoListId);
-        void AddTodoItem(TodoItem item);
-        void UpdateTodoItem(TodoItem item);
-        void DeleteTodoItemById(Guid Id);
+        public Task<IEnumerable<TodoItem>> GetAllTodoItemsByTodoListId(Guid TodoListId);
+        public void AddTodoItem(TodoItem item);
+        public void UpdateTodoItem(TodoItem item);
+        public void DeleteTodoItemById(Guid Id);
     }
 }

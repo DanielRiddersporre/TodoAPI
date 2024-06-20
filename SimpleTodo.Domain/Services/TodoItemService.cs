@@ -11,12 +11,20 @@ namespace SimpleTodo.Domain
             _TodoItemRepository = todoItemRepository;
         }
 
-        public void AddTodoItem(TodoItem todoItem)
+        public void AddTodoItem(string description, bool isDone, Guid todoListId)
         {
-            throw new NotImplementedException();
+            TodoItem todoItem = new TodoItem
+            {
+                Id = Guid.NewGuid(),
+                Description = description,
+                IsDone = isDone,
+                TodoListId = todoListId
+            };
+
+            _TodoItemRepository.AddTodoItem(todoItem);
         }
 
-        public void UpdateTodoItem(TodoItem todoItem)
+        public void UpdateTodoItem(Guid id, string name, bool isDone, Guid todoListId)
         {
             throw new NotImplementedException();
         }

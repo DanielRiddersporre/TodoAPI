@@ -9,8 +9,8 @@ namespace SimpleTodo_Domain.Interfaces
 {
     public interface ITodoItemService
     {
-        void AddTodoItem(TodoItem todoItem);
-        void UpdateTodoItem(TodoItem todoItem);
+        void AddTodoItem(string description, bool isDone, Guid todoListId);
+        void UpdateTodoItem(Guid id, string description, bool isDone, Guid todoListId);
         void DeleteTodoItem(Guid id);
     }
 }

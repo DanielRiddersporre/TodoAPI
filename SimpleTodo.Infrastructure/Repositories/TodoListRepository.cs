@@ -17,14 +17,36 @@ namespace SimpleTodo.Infrastructure
             _context.SaveChanges();
         }
 
-        public void DeleteTodoList(Guid id)
+        public async Task<bool> DeleteTodoList(Guid id)
         {
-            throw new NotImplementedException();
+            var todoList = await _context.TodoLists.FindAsync(id);
+
+            if (todoList == null)
+            {
+                return false;
+            }
+
+            _context.TodoLists.Remove(todoList);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
-        public void UpdateTodoList(Guid id)
+        public async Task<bool> UpdateTodoList(Guid id)
         {
-            throw new NotImplementedException();
+            var todoList = await _context.TodoLists.FindAsync(id);
+
+            if (todoList == null) 
+            {
+                return false;
+            }
+
+            _context.TodoLists.Update(todoList);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

@@ -3,7 +3,7 @@
     public interface ITodoListRepository
     {
         void AddTodoList(TodoList todoList);
-        void UpdateTodoList(Guid id);
-        void DeleteTodoList(Guid id);
+        public Task<bool> DeleteTodoList(Guid id);
+        public Task<bool> UpdateTodoList(Guid id);
     }
 }

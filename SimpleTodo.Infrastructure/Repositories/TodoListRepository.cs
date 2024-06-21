@@ -35,7 +35,18 @@ namespace SimpleTodo.Infrastructure
 
         public async Task<bool> UpdateTodoList(Guid id)
         {
-            throw new NotImplementedException();
+            var todoList = await _context.TodoLists.FindAsync(id);
+
+            if (todoList == null) 
+            {
+                return false;
+            }
+
+            _context.TodoLists.Update(todoList);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

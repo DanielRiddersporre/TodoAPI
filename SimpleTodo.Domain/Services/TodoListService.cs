@@ -18,5 +18,15 @@
 
             _TodoListRepository.AddTodoList(todoList);
         }
+
+        public void DeleteTodoList(Guid id)
+        {
+            _TodoListRepository.DeleteTodoList(id);
+        }
+
+        public void UpdateTodoList(Guid id)
+        {
+            _TodoListRepository.UpdateTodoList(id);
+        }
     }
 }

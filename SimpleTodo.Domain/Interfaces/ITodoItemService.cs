@@ -11,6 +11,6 @@ namespace SimpleTodo_Domain.Interfaces
     {
         void AddTodoItem(string description, bool isDone, Guid todoListId);
         void UpdateTodoItem(Guid id, string description, bool isDone, Guid todoListId);
-        void DeleteTodoItem(Guid id);
+        void DeleteTodoItem(Guid todoItemId);
     }
 }

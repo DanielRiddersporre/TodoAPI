@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SimpleTodo.Domain;
+using SimpleTodo.Infrastructure;
 
 namespace SimpleTodo.Controllers
 {
@@ -7,48 +8,48 @@ namespace SimpleTodo.Controllers
     [ApiController]
     public class ItemController : Controller
     {
-        private static List<TodoItem> todoItems = new List<TodoItem>();
+        ITodoItemRepository _todoItemRepository { get; set; }
+        public ItemController(ITodoItemRepository todoItemRepository)
+        {
+            _todoItemRepository = todoItemRepository;
+        }
 
         [HttpGet]
-        public ActionResult<IEnumerable<TodoItem>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItemsByTodoListId(Guid todoListId)
         {
-            return todoItems;
+            return Ok(await _todoItemRepository.GetAllTodoItemsByTodoListId(todoListId));
         }
 
-        [HttpPost("{item}")]
-        public ActionResult<TodoItem> AddTodoItem(TodoItem item)
+        [HttpPost]
+        public ActionResult<TodoItem> AddTodoItem(Guid todoListId, string description, bool isDone)
         {
-            item.Id = Guid.NewGuid();
-            
-            todoItems.Add(item);
-            
-            return Ok(todoItems);
-        }
-
-        [HttpPut("{item}")]
-        public ActionResult<TodoItem> UpdateTodoItem(TodoItem item)
-        {
-            var itemToEdit = todoItems.SingleOrDefault(i => i.Id == item.Id);
-
-            if(itemToEdit != null)
+            TodoItem todoItem = new TodoItem
             {
-                itemToEdit.Description = item.Description;
-                itemToEdit.IsDone = item.IsDone;
-                return Ok(itemToEdit);
-            }
-            return BadRequest("No item found");
+                Id = Guid.NewGuid(),
+                Description = description,
+                IsDone = isDone,
+                TodoListId = todoListId
+            };
+
+            _todoItemRepository.AddTodoItem(todoItem);
+            
+            return Ok($"TodoItem added!");
+        }
+
+        [HttpPut]
+        public ActionResult<TodoItem> UpdateTodoItem(TodoItem todoItem)
+        {
+            _todoItemRepository.UpdateTodoItem(todoItem);
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteTodoItem(Guid id)
+        public ActionResult DeleteTodoItem(Guid todoItemId)
         {
-            var todoItem = todoItems.SingleOrDefault(item => item.Id == id);
-            if (todoItem != null)
-            {
-                todoItems.Remove(todoItem); 
-                return Ok($"{todoItem} deleted successfully!");
-            }
-            return BadRequest($"Item with {id} was not found");
+            _todoItemRepository.DeleteTodoItem(todoItemId);
+
+            return Ok();
         }
     }
 }

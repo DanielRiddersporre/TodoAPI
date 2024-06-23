@@ -1,4 +1,5 @@
-﻿namespace SimpleTodo.Domain
+﻿
+namespace SimpleTodo.Domain
 {
     public class TodoListService : ITodoListService
     {
@@ -6,6 +7,11 @@
         public TodoListService(ITodoListRepository todoListRepository)
         {
             _TodoListRepository = todoListRepository;
+        }
+
+        public async Task<IEnumerable<TodoList>> GetAllTodoLists()
+        {
+            return await _TodoListRepository.GetAllTodoLists();
         }
 
         public void CreateTodoList(string name)
@@ -17,16 +23,6 @@
             };
 
             _TodoListRepository.AddTodoList(todoList);
-        }
-
-        public void DeleteTodoList(Guid id)
-        {
-            _TodoListRepository.DeleteTodoList(id);
-        }
-
-        public void UpdateTodoList(Guid id)
-        {
-            _TodoListRepository.UpdateTodoList(id);
         }
     }
 }

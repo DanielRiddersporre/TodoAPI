@@ -13,6 +13,14 @@ namespace SimpleTodo.Controllers
             _todoListService = todoListService;
         }
 
+        [HttpGet("GetAllTodoLists")]
+        public async Task<IActionResult> GetAllTodoLists()
+        {
+            var todoLists = await _todoListService.GetAllTodoLists();
+
+            return Ok(todoLists);
+        }
+
         [HttpPost("CreateTodoList")]
         public IActionResult CreateTodoList(string name)
         {

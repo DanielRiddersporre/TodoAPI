@@ -32,11 +32,15 @@ namespace SimpleTodo.Infrastructure
             _context.SaveChanges();
         }
 
-        public void DeleteTodoItemById(TodoItem item)
+        public void DeleteTodoItem(Guid todoItemId)
         {
-            _context.TodoItems.Remove(item);
+            var itemToRemove = _context.TodoItems.Find(todoItemId);
 
-            _context.SaveChanges();
+            if (itemToRemove != null)
+            {
+                _context.TodoItems.Remove(itemToRemove);
+                _context.SaveChanges();
+            }
         }
     }
 }

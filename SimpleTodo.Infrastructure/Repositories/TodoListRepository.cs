@@ -1,4 +1,5 @@
-﻿using SimpleTodo.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using SimpleTodo.Domain;
 
 namespace SimpleTodo.Infrastructure
 {
@@ -8,6 +9,10 @@ namespace SimpleTodo.Infrastructure
         public TodoListRepository(TodoContext context)
         {
             _context = context;
+        }
+        public async Task<IEnumerable<TodoList>> GetAllTodoLists()
+        {
+            return await _context.TodoLists.ToListAsync();
         }
 
         public void AddTodoList(TodoList todoList)

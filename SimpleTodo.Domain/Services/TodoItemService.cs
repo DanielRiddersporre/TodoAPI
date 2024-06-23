@@ -26,12 +26,18 @@ namespace SimpleTodo.Domain
 
         public void UpdateTodoItem(Guid id, string name, bool isDone, Guid todoListId)
         {
-            throw new NotImplementedException();
+            TodoItem todoItem = new TodoItem
+            {
+                Id = id,
+                Description = name,
+                IsDone = isDone,
+                TodoListId = todoListId
+            };
         }
 
-        public void DeleteTodoItem(Guid id)
+        public void DeleteTodoItem(Guid todoItemId)
         {
-            throw new NotImplementedException();
+            _TodoItemRepository.DeleteTodoItem(todoItemId);
         }
     }
 }
